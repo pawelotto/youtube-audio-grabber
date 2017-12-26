@@ -65,14 +65,9 @@ export default {
         opts.unshift('-ss')
       }
       opts.unshift('-y')
-      // const child = spawn(fstatic.path, opts)
       const child = spawn(ffmpegPath, opts)
-      child.stdout.on('data', chunk => {
-        console.log(chunk.toString())
-      })
-      child.stderr.on('data', chunk => {
-        console.log(chunk.toString())
-      })
+      child.stdout.on('data', chunk => console.log(chunk.toString()))
+      child.stderr.on('data', chunk => console.log(chunk.toString()))
       child.on('exit', (code, signal) => {
         fs.unlinkSync(fn)
         console.log('Done')

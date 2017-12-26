@@ -2,12 +2,12 @@ import * as yt from 'ytdl-core'
 import * as fstatic from 'ffmpeg-static'
 import * as fs from 'fs-extra-promise'
 import * as config from 'config'
-import { isNumber } from 'util'
-import { downloadOptions, videoFormat, videoInfo } from 'ytdl-core'
 import * as assert from 'assert'
 import * as path from 'path'
 import * as sanitize from 'sanitize-filename'
 import { spawn } from 'child_process'
+import { isNumber } from 'util'
+import { downloadOptions, videoFormat, videoInfo } from 'ytdl-core'
 
 const ffmpegPath = process.env.FFMPEG_PATH || fstatic.path
 
@@ -30,7 +30,7 @@ export default {
       const highest = formats
         .filter(fo => fo['audioBitrate'] != null)
         .reduce((prev, curr) => prev['audioBitrate'] > curr['audioBitrate'] ? prev : curr)
-      console.log(highest['audioBitrate'])
+      console.log(highest['audioBitrate'] + 'k')
       return highest
     }
     else console.error('Formats list is empty')

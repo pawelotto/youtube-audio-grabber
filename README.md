@@ -21,4 +21,6 @@ Optional second argument allows you to skip *number of seconds* counting from th
 
 Files are grabbed, converted and stored in the './data' folder. To change that, edit ./config/default.json file.
 
+ffmpeg is being used to do the conversion, this application attempts to install it's own version and will use it by default, however, if you wish to use your own system-installed version of ffmpeg you can define an absolute path to it by exporting the environment variable *FFMPEG_PATH*.
+
 Happy grabbing! :) 

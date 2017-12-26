@@ -1,9 +1,9 @@
 import fn from './functions'
-// import * as assert from 'assert'
+import * as assert from 'assert'
 
 const url = process.argv[2]
 const skip = parseInt(process.argv[3]) || 0
-// assert.ok(url, 'Please provide valid youtube url for video')
+assert.ok(/^https:\/\/www\.youtube\.com\/.+/.test(url), 'Please provide a valid YouTube url for a video')
 
 main()
 

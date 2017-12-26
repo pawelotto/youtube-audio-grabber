@@ -9,6 +9,8 @@ import * as path from 'path'
 import * as sanitize from 'sanitize-filename'
 import { spawn } from 'child_process'
 
+const ffmpegPath = process.env.FFMPEG_PATH || fstatic.path
+
 export default {
 
   async getAvailableFormats(url: string): Promise<any> {
@@ -63,7 +65,8 @@ export default {
         opts.unshift('-ss')
       }
       opts.unshift('-y')
-      const child = spawn(fstatic.path, opts)
+      // const child = spawn(fstatic.path, opts)
+      const child = spawn(ffmpegPath, opts)
       child.stdout.on('data', chunk => {
         console.log(chunk.toString())
       })

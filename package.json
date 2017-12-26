@@ -10,12 +10,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://bitbucket.org/pawelotto/youtube-audio-grabber.git"
+    "url": "git+https://github.com/pawelotto/youtube-audio-grabber.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/pawelotto/youtube-audio-grabber#readme",
+  "homepage": "https://github.com/pawelotto/youtube-audio-grabber#readme",
   "dependencies": {
     "assert": "^1.4.1",
     "config": "^1.28.1",

@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node dist/index"
   },
   "repository": {
     "type": "git",
@@ -13,5 +14,21 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/pawelotto/youtube-audio-grabber#readme"
+  "homepage": "https://bitbucket.org/pawelotto/youtube-audio-grabber#readme",
+  "dependencies": {
+    "assert": "^1.4.1",
+    "config": "^1.28.1",
+    "ffmpeg": "0.0.4",
+    "ffmpeg-static": "^2.1.0",
+    "fs-extra-promise": "^1.0.1",
+    "sanitize-filename": "^1.6.1",
+    "ytdl-core": "^0.18.5"
+  },
+  "devDependencies": {
+    "@types/assert": "0.0.31",
+    "@types/config": "0.0.33",
+    "@types/ffmpeg-static": "^2.0.0",
+    "@types/fs-extra-promise": "^1.0.4",
+    "@types/sanitize-filename": "^1.1.28"
+  }
 }

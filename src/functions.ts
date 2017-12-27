@@ -46,7 +46,7 @@ export default {
           fs.ensureDirSync(outdir)
           const fn = path.join(outdir, sanitize(title) + "." + format.container)
           yt(url, { format: format })
-            .on('progress', (chunk, prog, length) => { c++; if (c % 100 === 0 || prog === length) console.log(`Got ${Math.floor(prog / 1000)} of ${Math.floor(length / 1000)} KB`) })
+            .on('progress', (chunk, prog, length) => { c++; if (c % 200 === 0 || prog === length) console.log(`Got ${Math.floor(prog / 1000)} of ${Math.floor(length / 1000)} KB`) })
             .on('end', () => {console.log('Grab done'); resolve(fn)})
             .pipe(fs.createWriteStream(fn))
         } catch (err) {

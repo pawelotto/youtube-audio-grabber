@@ -3,7 +3,7 @@ import * as assert from 'assert'
 
 const url = process.argv[2]
 const skip = parseInt(process.argv[3]) || 0
-assert.ok(/^https:\/\/www\.youtube\.com\/.+/.test(url), 'Please provide a valid YouTube url for a video')
+assert.ok(/^https:\/\/(www\.youtube\.com)|(youtu\.be)\/.+/.test(url), 'Please provide a valid YouTube url for a video')
 
 main()
 

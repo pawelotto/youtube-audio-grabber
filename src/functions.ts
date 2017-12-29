@@ -70,7 +70,7 @@ export default {
       child.stderr.on('data', chunk => console.log(chunk.toString()))
       child.on('exit', (code, signal) => {
         fs.unlinkSync(fn)
-        console.log('Done')
+        console.log('Saved file ' + fn)
       })
     } catch (err) {
       console.error(err)

@@ -19,7 +19,7 @@ Seconds to skip is an optional parameter allowing you to skip number of seconds 
 
 Optional second argument allows you to skip *number of seconds* counting from the stream start. Some music videos include long and boring intros, that's where this option comes handy.
 
-Files are grabbed, converted and stored in the './data' folder. To change that, edit ./config/default.json file.
+Files are grabbed, converted and stored in the './data' folder. To change that, export env variable *YOUTUBE_AUDIO_GRABBER_OUTDIR* where you specify your default output folder.
 
 ffmpeg is being used to do the conversion, this application attempts to install it's own version and will use it by default, however, if you wish to use your own system-installed version of ffmpeg you can define an absolute path to it by exporting the environment variable *FFMPEG_PATH*.
 

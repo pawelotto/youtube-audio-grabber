@@ -1,6 +1,6 @@
 {
   "name": "youtube-audio-grabber",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Grab video in highest quality from YouTube and convert it to mp3",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -20,7 +20,6 @@
   "homepage": "https://github.com/pawelotto/youtube-audio-grabber#readme",
   "dependencies": {
     "assert": "^1.4.1",
-    "config": "^1.28.1",
     "ffmpeg-static": "^2.1.0",
     "fs-extra-promise": "^1.0.1",
     "sanitize-filename": "^1.6.1",
@@ -28,7 +27,6 @@
   },
   "devDependencies": {
     "@types/assert": "0.0.31",
-    "@types/config": "0.0.33",
     "@types/ffmpeg-static": "^2.0.0",
     "@types/fs-extra-promise": "^1.0.4",
     "@types/sanitize-filename": "^1.1.28",

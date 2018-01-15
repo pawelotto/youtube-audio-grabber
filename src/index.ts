@@ -13,10 +13,12 @@ const outDir = process.env.YOUTUBE_AUDIO_GRABBER_OUTDIR || './data'
 
 export async function getAvailableFormats(url: string): Promise<any> {
   try {
-    console.log('Getting available formats for ' + url)
-    const res: videoInfo = await yt.getInfo(url)
-    if (res && res.formats) return { formats: res.formats, title: res.title }
-    else console.error('No valid formats found for ' + url)
+    if(/(^https:\/\/youtu\.be\/.+)|(^https:\/\/(www\.)?youtube\.com\/.+)/.test(url)){
+      console.log('Getting available formats for ' + url)
+      const res: videoInfo = await yt.getInfo(url)
+      if (res && res.formats) return { formats: res.formats, title: res.title }
+      else console.error('No valid formats found for ' + url)
+    } else console.error('Invalid YouTube url provided')
   } catch (err) {
     console.error(err)
   }
@@ -55,22 +57,25 @@ export async function grabFile(title: string, url: string, format: videoFormat):
 }
 
 export async function convertFile(fn: string, ss?: number) {
-  try {
-    console.log('Converting file ' + fn + ' with ' + fstatic.path)
-    let opts = ['-i', fn, '-vn', '-ab', '256k', fn.replace(/\.(\w|\d){3,4}$/, '.mp3')]
-    if (ss) {
-      opts.unshift(ss.toString())
-      opts.unshift('-ss')
+  return new Promise((resolve, reject) => {
+    try {
+      console.log('Converting file ' + fn + ' with ' + fstatic.path)
+      let opts = ['-i', fn, '-vn', '-ab', '256k', fn.replace(/\.(\w|\d){3,4}$/, '.mp3')]
+      if (ss) {
+        opts.unshift(ss.toString())
+        opts.unshift('-ss')
+      }
+      opts.unshift('-y')
+      const child = spawn(ffmpegPath, opts)
+      child.stdout.on('data', chunk => console.log(chunk.toString()))
+      child.stderr.on('data', chunk => console.log(chunk.toString()))
+      child.on('exit', (code, signal) => {
+        fs.unlinkSync(fn)
+        console.log('Saved file ' + fn)
+        resolve(fn)
+      })
+    } catch (err) {
+      console.error(err)
     }
-    opts.unshift('-y')
-    const child = spawn(ffmpegPath, opts)
-    child.stdout.on('data', chunk => console.log(chunk.toString()))
-    child.stderr.on('data', chunk => console.log(chunk.toString()))
-    child.on('exit', (code, signal) => {
-      fs.unlinkSync(fn)
-      console.log('Saved file ' + fn)
-    })
-  } catch (err) {
-    console.error(err)
-  }
+  })
 }

@@ -8,9 +8,13 @@
       "type": "node",
       "request": "launch",
       "name": "Launch Program",
-      "program": "${workspaceFolder}\\dist\\index.js",
+      "program": "${workspaceFolder}/src/run-local.ts",
+      "args": [
+        // "https://www.youtube.com/watch?v=3NaPPurs2zw",
+        "https://www.youtube.com/watch?v=3GA4vP7PKWg"
+      ],
       "outFiles": [
-        "${workspaceFolder}/**/*.js"
+        "${workspaceFolder}/dist/**/*.js"
       ]
     }
   ]

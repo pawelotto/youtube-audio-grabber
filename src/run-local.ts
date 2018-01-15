@@ -8,12 +8,12 @@ assert.ok(/(^https:\/\/youtu\.be\/.+)|(^https:\/\/(www\.)?youtube\.com\/.+)/.tes
 main()
 
 async function main(){
-  const formatInfo = await yt.getAvailableFormats(url)
-  if(formatInfo){
-    const highest = yt.getHighestBitrateFormat(formatInfo.formats)
-    if(highest) { 
-      const file = await yt.grabFile(formatInfo.title, url, highest)
+  const availableFormats = await yt.getAvailableFormats(url)
+  if(availableFormats){
+    const highestFormat = yt.getHighestBitrateFormat(availableFormats.formats)
+    if(highestFormat && highestFormat.url && availableFormats.title) { 
+      const file = await yt.grabFile(availableFormats.title, url, highestFormat)
       if(file) yt.convertFile(file, skip)
-    }
+    } else { console.error("Invalid video format.") }
   }
 }

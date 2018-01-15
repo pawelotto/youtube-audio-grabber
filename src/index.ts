@@ -16,8 +16,8 @@ export async function getAvailableFormats(url: string): Promise<any> {
     if(/(^https:\/\/youtu\.be\/.+)|(^https:\/\/(www\.)?youtube\.com\/.+)/.test(url)){
       console.log('Getting available formats for ' + url)
       const res: videoInfo = await yt.getInfo(url)
-      if (res && res.formats) return { formats: res.formats, title: res.title }
-      else console.error('No valid formats found for ' + url)
+      if (res && res.formats && res.formats.length && res.status === "ok") return { formats: res.formats, title: res.title }
+      else console.error('Did you try updating ytdl-core to the latest version? Because there was an error downloading video information:\n\n' + res)
     } else console.error('Invalid YouTube url provided')
   } catch (err) {
     console.error(err)
@@ -30,10 +30,9 @@ export function getHighestBitrateFormat(formats: Array<videoFormat>) {
     const highest = formats
       .filter(fo => fo['audioBitrate'] != null)
       .reduce((prev, curr) => prev['audioBitrate'] > curr['audioBitrate'] ? prev : curr)
-    console.log(highest['audioBitrate'] + 'k')
+    console.log('Got ' + highest['audioBitrate'] + 'k')
     return highest
-  }
-  else console.error('Formats list is empty')
+  } else console.error('No valid video formats found.')
 }
 
 export async function grabFile(title: string, url: string, format: videoFormat): Promise<any> {

@@ -1,7 +1,12 @@
 {
   "name": "youtube-audio-grabber",
   "version": "1.0.2",
+<<<<<<< HEAD
   "description": "Grab video in highest quality from YouTube and convert them to mp3.",
+=======
+  "private": false,
+  "description": "Grab video in highest quality from YouTube and convert it to mp3",
+>>>>>>> develop
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -14,8 +19,8 @@
     "type": "git",
     "url": "git+https://github.com/pawelotto/youtube-audio-grabber.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [ "youtube", "ffmpeg" ],
+  "author": "Paweł Otto",
   "license": "ISC",
   "homepage": "https://github.com/pawelotto/youtube-audio-grabber#readme",
   "dependencies": {

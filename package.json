@@ -1,7 +1,7 @@
 {
   "name": "youtube-audio-grabber",
   "version": "1.0.2",
-  "description": "Grab video in highest quality from YouTube and convert it to mp3",
+  "description": "Grab video in highest quality from YouTube and convert them to mp3.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {

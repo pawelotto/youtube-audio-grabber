@@ -15,7 +15,10 @@
     "type": "git",
     "url": "git+https://github.com/pawelotto/youtube-audio-grabber.git"
   },
-  "keywords": [ "youtube", "ffmpeg" ],
+  "keywords": [
+    "youtube",
+    "ffmpeg"
+  ],
   "author": "Paweł Otto",
   "license": "ISC",
   "homepage": "https://github.com/pawelotto/youtube-audio-grabber#readme",
@@ -24,7 +27,7 @@
     "ffmpeg-static": "^2.1.0",
     "fs-extra-promise": "^1.0.1",
     "sanitize-filename": "^1.6.1",
-    "ytdl-core": "^0.18.7"
+    "ytdl-core": "^0.20.4"
   },
   "devDependencies": {
     "@types/assert": "0.0.31",

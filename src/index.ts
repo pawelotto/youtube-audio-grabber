@@ -13,7 +13,7 @@ const outDir = process.env.YOUTUBE_AUDIO_GRABBER_OUTDIR || './data'
 
 export async function getAvailableFormats(url: string): Promise<any> {
   try {
-    if(/(^https:\/\/youtu\.be\/.+)|(^https:\/\/(www\.)?youtube\.com\/.+)/.test(url)){
+    if (/(^https:\/\/youtu\.be\/.+)|(^https:\/\/(www\.)?youtube\.com\/.+)/.test(url)) {
       console.log('Getting available formats for ' + url)
       const res: videoInfo = await yt.getInfo(url)
       if (res && res.formats && res.formats.length && res.status === "ok") return { formats: res.formats, title: res.title }
@@ -59,7 +59,7 @@ export async function convertFile(fn: string, ss?: number) {
   return new Promise((resolve, reject) => {
     try {
       console.log('Converting file ' + fn + ' with ' + fstatic.path)
-      let opts = ['-i', fn, '-vn', '-ab', '256k', fn.replace(/\.(\w|\d){3,4}$/, '.mp3')]
+      let opts = ['-i', fn, '-vn', '-ab', '320k', fn.replace(/\.(\w|\d){3,4}$/, '.mp3')]
       if (ss) {
         opts.unshift(ss.toString())
         opts.unshift('-ss')

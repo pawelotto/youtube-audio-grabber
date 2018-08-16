@@ -6,7 +6,7 @@ import * as path from 'path'
 import * as sanitize from 'sanitize-filename'
 import { spawn } from 'child_process'
 import { isNumber } from 'util'
-import { downloadOptions, videoFormat, videoInfo } from 'ytdl-core'
+import { videoFormat, videoInfo } from 'ytdl-core'
 
 const ffmpegPath = process.env.FFMPEG_PATH || fstatic.path
 const outDir = process.env.YOUTUBE_AUDIO_GRABBER_OUTDIR || './data'

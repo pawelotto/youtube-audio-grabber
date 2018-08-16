@@ -1,6 +1,6 @@
 {
   "name": "youtube-audio-grabber",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": false,
   "description": "Grab video in highest quality from YouTube and convert it to mp3",
   "main": "dist/index.js",
@@ -9,7 +9,8 @@
     "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node dist/run-local",
-    "build": "tsc"
+    "build": "tsc",
+    "postinstall": "tsc"
   },
   "repository": {
     "type": "git",

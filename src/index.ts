@@ -1,11 +1,11 @@
-import * as yt from 'ytdl-core'
+import * as assert from 'assert'
+import { spawn } from 'child_process'
 import * as fstatic from 'ffmpeg-static'
 import * as fs from 'fs-extra-promise'
-import * as assert from 'assert'
 import * as path from 'path'
 import * as sanitize from 'sanitize-filename'
-import { spawn } from 'child_process'
 import { isNumber } from 'util'
+import * as yt from 'ytdl-core'
 import { videoFormat, videoInfo } from 'ytdl-core'
 
 const ffmpegPath = process.env.FFMPEG_PATH || fstatic.path
@@ -28,7 +28,7 @@ export function getHighestBitrateFormat(formats: Array<videoFormat>) {
   if (formats.length) {
     process.stdout.write('Getting highest bitrate format: ')
     const highest = formats
-      .filter(fo => fo['audioBitrate'] != null)
+      .filter(fo => fo['audioBitrate'])
       .reduce((prev, curr) => prev['audioBitrate'] > curr['audioBitrate'] ? prev : curr)
     console.log('Got ' + highest['audioBitrate'] + 'k')
     return highest
@@ -44,6 +44,7 @@ export async function grabFile(title: string, url: string, format: videoFormat):
         assert.ok(outdir, "Outdir not specified")
         fs.ensureDirSync(outdir)
         const fn = path.join(outdir, sanitize(title) + "." + format.container)
+
         yt(url, { format: format })
           .on('progress', (chunk, prog, length) => { c++; if (c % 200 === 0 || prog === length) console.log(`Got ${Math.floor(prog / 1000)} of ${Math.floor(length / 1000)} KB`) })
           .on('end', () => { console.log('Grab done'); resolve(fn) })
